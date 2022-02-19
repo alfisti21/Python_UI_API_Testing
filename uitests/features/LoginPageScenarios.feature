@@ -33,3 +33,14 @@ Feature: Login page scenarios
       | browser |
       | Chrome  |
       | Firefox |
+
+  Scenario Outline: I try invalid inputs
+    Given I access "https://sandbox-dashboard.primer.io/login" with <browser>
+    And   I click login
+    Then  I verify empty field error appears
+    And   I quit the driver
+
+    Examples: Browsers
+      | browser |
+      | Chrome  |
+      | Firefox |

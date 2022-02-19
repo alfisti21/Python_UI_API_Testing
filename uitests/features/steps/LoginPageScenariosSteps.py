@@ -1,7 +1,8 @@
 from behave import then, step
 from uitests.pageObjects.loginPage import check_elements_present
 from uitests.locators.loginPageLocators import page_title, username_input, login_button, \
-    incorrect_credentials_message, forgot_password_link, request_link, email_input, password_input, reset_message
+    incorrect_credentials_message, forgot_password_link, request_link, email_input, \
+    password_input, reset_message, empty_field_error
 from uitests.utils.utils import is_element_present, click_element, fill_input
 
 
@@ -46,3 +47,8 @@ def i_verify_reset_sent(context):
     """if reset was working, this testcase could be
     expanded in order to check if an email is sent against
     a real email server"""
+
+
+@then('I verify empty field error appears')
+def i_verify_empty_field_error(context):
+    assert is_element_present(context, empty_field_error)

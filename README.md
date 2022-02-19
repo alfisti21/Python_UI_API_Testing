@@ -1,0 +1,1 @@
+behave -f allure_behave.formatter:AllureFormatter -o reports/ .\uitests\features\LoginPageScenarios.feature

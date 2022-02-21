@@ -2,3 +2,4 @@
 reports
 .idea
 geckodriver.log
+apitests/.pytest_cache

@@ -26,6 +26,7 @@ the screenshot being taken.
 
 ![plot](./Capture.JPG)
 
+
 ###API tests
 
 For the API tests make sure to install `nose` package. After that, just right click on any of the py files

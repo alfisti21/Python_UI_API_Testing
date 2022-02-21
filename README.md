@@ -24,6 +24,8 @@ After that run: allure serve reports/. You should be redirected to the browser a
 the ALlure report along with screenshots attached. Feel free to modify any locators to a test and observe
 the screenshot being taken.
 
+![plot](./Capture.JPG)
+
 ###API tests
 
 For the API tests make sure to install `nose` package. After that, just right click on any of the py files

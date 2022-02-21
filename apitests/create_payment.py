@@ -20,6 +20,7 @@ class CreatePaymentApiTests(unittest.TestCase):
     @staticmethod
     @patch('apitests.utils.services.requests.post')
     def test_mock_create_payment(mock_post):
+        # Testing that after a successful payment the status is correct
         mock_post.return_value.ok = True
         mock_post.return_value.status_code = 200
         mock_post.return_value.json.return_value = create_payment_response_body
@@ -33,6 +34,7 @@ class CreatePaymentApiTests(unittest.TestCase):
     @staticmethod
     @patch('apitests.utils.services.requests.post')
     def test_mock_create_payment_bad_request(mock_post):
+        # Testing a bad request response
         mock_post.return_value.ok = False
         mock_post.return_value.status_code = 400
         mock_post.return_value.json.return_value = {'message': 'Bad Request'}

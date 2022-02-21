@@ -7,6 +7,8 @@ from allure import attachment_type
 
 
 def is_element_present(context, element):
+    # Generic function to check if an element is visible. If it is not
+    # after 5 seconds we will get an exception with a screenshot.
     try:
         elements = WebDriverWait(context.driver, 5).until(EC.presence_of_element_located((By.XPATH, element)))
         return True if elements else False
@@ -17,11 +19,13 @@ def is_element_present(context, element):
 
 
 def click_element(context, element):
+    # Generic function to click an element
     if is_element_present(context, element):
         context.driver.find_element_by_xpath(element).click()
 
 
 def fill_input(context, element, text):
+    # Generic function to send text to an input
     if is_element_present(context, element):
         context.driver.find_element_by_xpath(element).send_keys(text)
 

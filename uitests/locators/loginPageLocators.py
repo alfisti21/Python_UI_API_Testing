@@ -1,3 +1,4 @@
+# Xpath locators for the login page
 logo = "//div[contains(@class, 'Logo')]"
 username_input = '//input[@id="username"]'
 password_input = '//input[@id="password"]'

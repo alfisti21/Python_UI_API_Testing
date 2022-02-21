@@ -5,8 +5,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 
+# Here we will define steps that are used by lots of feature files or scenarios
 @given('I access "{url}" with {browser}')
 def i_access_url(context, url, browser):
+    # We set-up the driver with the desired headless option
     chrome_options = Options()
     firefox_options = FirefoxOptions()
     chrome_options.add_argument("--headless")

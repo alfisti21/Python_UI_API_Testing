@@ -17,6 +17,7 @@ class SearchPaymentsApiTests(unittest.TestCase):
 
     @staticmethod
     @patch('apitests.utils.services.requests.get')
+    # by patching we intercept the request with a mock service
     def test_mock_get_payments_ok(mock_get):
         # Configure the mock to return a response with
         # an OK status and a specific json body
@@ -34,6 +35,7 @@ class SearchPaymentsApiTests(unittest.TestCase):
     @staticmethod
     @patch('apitests.utils.services.requests.get')
     def test_mock_get_payments_not_ok(mock_get):
+        # Testing the case of a non-OK response
         mock_get.return_value.ok = False
         response = payments_get_request()
         assert_false(response.ok)
@@ -41,6 +43,7 @@ class SearchPaymentsApiTests(unittest.TestCase):
     @staticmethod
     @patch('apitests.utils.services.requests.get')
     def test_mock_get_payment_with_params(mock_get):
+        # Retrieve payments after a certain date
         mock_get.return_value.ok = True
         mock_get.return_value.json.return_value = payments_api_response_filtered
 
@@ -52,6 +55,7 @@ class SearchPaymentsApiTests(unittest.TestCase):
     @staticmethod
     @patch('apitests.utils.services.requests.get')
     def test_mock_get_settled_payment_with_params(mock_get):
+        # Retrieve SETTLED payments after a certain date
         failed_payments_number = 0
         query_parameters = 'from_date=2021-03-01T14:56:56.869248'
         mock_get.return_value.ok = True
@@ -65,7 +69,8 @@ class SearchPaymentsApiTests(unittest.TestCase):
         for x in range(data_length):
             if response.json()['data'][x]['status'] == 'SETTLED':
                 failed_payments_number += 1
-        print('There are '+str(data_length)+' payments after this date.'+str(failed_payments_number)+' is/are SETTLED')
+        print('There are ' + str(data_length) + ' payments after this date.' + str(
+            failed_payments_number) + ' is/are SETTLED')
 
     """We can have test cases for paginated responses as well
     that would go through as many pages as per our needs"""
